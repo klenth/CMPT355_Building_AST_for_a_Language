@@ -6,6 +6,7 @@ program
 
 statement
     : assignment
+    | functionDefinition
     | print
     | input
     | ifStatement
@@ -14,6 +15,10 @@ statement
 
 assignment
     : IDENTIFIER '=' expression ';'
+    ;
+
+functionDefinition
+    : IDENTIFIER '(' (IDENTIFIER (',' IDENTIFIER)*) ')' '=' expression ';'
     ;
 
 print
