@@ -21,7 +21,7 @@ functionDefinition
     : IDENTIFIER '(' (IDENTIFIER (',' IDENTIFIER)*) ')' '=' expression ';'
     ;
 
-print
+print //node that has item children from the itemList...
     : 'print' itemList ';'
     ;
 
