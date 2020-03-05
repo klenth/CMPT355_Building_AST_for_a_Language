@@ -49,14 +49,14 @@ item
     ;
 
 expression
-    : NUMBER
-    | IDENTIFIER
-    | '(' expression ')'
-    | <assoc=right> expression '^' expression
-    | expression ('*' | '/') expression
-    | '-' expression
-    | expression ('+' | '-') expression
-    | IDENTIFIER arguments
+    : NUMBER                                        #numberExpression
+    | IDENTIFIER                                    #variableExpression
+    | '(' expression ')'                            #parenExpression
+    | <assoc=right> expression '^' expression       #binaryOpExpression
+    | expression ('*' | '/') expression             #binaryOpExpression
+    | '-' expression                                #negateExpression
+    | expression ('+' | '-') expression             #binaryOpExpression
+    | IDENTIFIER arguments                          #funcCallExpression
     ;
 
 booleanExpression

@@ -14,4 +14,9 @@
 | `InputStatement`        |                     | `input`               |
 | `IfStatement`           |                     | `ifStatement`         |
 | `WhileLoop`             |                     | `whileLoop`           |
+| `NumberExpression`      |                     | `#numberExpr`         |
+| `VariableExpression`    |                     | `#variableExpr`       |
+| `BinaryOpExpression`    |                     | `#binaryOpExpr`       |
+| `NegateExpression`      |                     | `#negateExpr`         |
+| `FunctionCallExpression`|                     | `#funcCallExpr`       |
 | `BooleanExpression` (A) |                     | `booleanExpression`   | —
