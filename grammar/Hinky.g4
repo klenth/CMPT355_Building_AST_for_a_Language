@@ -18,7 +18,7 @@ assignment
     ;
 
 functionDefinition
-    : IDENTIFIER '(' (IDENTIFIER (',' IDENTIFIER)*) ')' '=' expression ';'
+    : id=IDENTIFIER '(' (params+=IDENTIFIER (',' params+=IDENTIFIER)*) ')' '=' body=expression ';'
     ;
 
 print
