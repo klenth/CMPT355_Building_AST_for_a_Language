@@ -40,7 +40,7 @@ whileLoop
     ;
 
 itemList
-    : (item (',' item)*)?
+    : (items+=item (',' items+=item)*)?
     ;
 
 item

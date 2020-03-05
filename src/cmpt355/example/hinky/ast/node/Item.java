@@ -34,12 +34,12 @@ public class Item extends AstNode {
 
 	// check type: String
 	public boolean isString() {
-		return (str != undefined);
+		return (str != null);
 	}
 
 	// check type: Expression
 	public boolean isExpression() {
-		return (expr != Null);
+		return (expr != null);
 	}
 
 	@Override
