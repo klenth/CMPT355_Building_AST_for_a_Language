@@ -21,7 +21,7 @@ functionDefinition
     : id=IDENTIFIER '(' (params+=IDENTIFIER (',' params+=IDENTIFIER)*) ')' '=' body=expression ';'
     ;
 
-print
+print //node that has item children from the itemList...
     : 'print' itemList ';'
     ;
 
