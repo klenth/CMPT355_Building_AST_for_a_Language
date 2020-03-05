@@ -60,10 +60,10 @@ expression
     ;
 
 booleanExpression
-    : 'not' booleanExpression                                           #notBool
-    | booleanExpression 'and' booleanExpression                         #binaryBoolOp
-    | booleanExpression 'or' booleanExpression                          #binaryBoolOp
-    | expression ('=' | '<>' | '<' | '>' | '<=' | '>=') expression      #binaryBoolExpr
+    : 'not' booleanExpression                       #notBool
+    | booleanExpression 'and' booleanExpression     #binaryBoolOp
+    | booleanExpression 'or' booleanExpression      #binaryBoolOp
+    | expression ('=' | '<>' | '<' | '>' | '<=' | '>=') expression  #binaryBoolExpr
     ;
 
 arguments

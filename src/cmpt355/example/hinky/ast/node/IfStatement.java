@@ -6,50 +6,53 @@ import java.util.List;
 import java.util.Optional;
 
 public class IfStatement extends Statement {
-	private Expression cond;
-	private Statement trueStmt, falseStmt;
 
-	public IfStatement(Expression cond, Statement trueStmt, Statement falseStmt) {
-		setCond(cond);
-		setTrueStmt(trueStmt);
-		setFalseStmt(falseStmt);
-	}
+    private Expression cond;
+    private Statement trueStmt, falseStmt;
 
-	public Expression getCond() {
-		return cond;
-	}
+    public IfStatement(Expression cond, Statement trueStmt, Statement falseStmt) {
+        setCond(cond);
+        setTrueStmt(trueStmt);
+        setFalseStmt(falseStmt);
+    }
 
-	public void setCond(Expression cond) {
-		this.cond = reparentNonNull(cond); // use reparentNonNull to change the non-optional children's parent
-	}
+    public Expression getCond() {
+        return cond;
+    }
 
-	public Statement getTrueStmt() {
-		return trueStmt;
-	}
+    public void setCond(Expression cond) {
+        this.cond = reparentNonNull(cond); // reparentNonNull because it's not optional
+    }
 
-	public void setTrueStmt(Statement trueStmt) {
-		this.trueStmt = reparentNonNull(trueStmt);
-	}
+    public Statement getTrueStmt() {
+        return trueStmt;
+    }
 
-	public Optional<Statement> getFalseStmt() {
-		return Optional.ofNullable(falseStmt);
-	}
+    public void setTrueStmt(Statement trueStmt) {
+        this.trueStmt = reparentNonNull(trueStmt);
+    }
 
-	public void setFalseStmt(Statement falseStmt) {
-		this.falseStmt = reparent(falseStmt); // this is optional so we use reparent not reparentNotNull
-	}
+    public Optional<Statement> getFalseStmt() {
+        return Optional.ofNullable(falseStmt);
+        // Optional.ofNullable() returns an empty Optional if the arg is null or an
+        // Optional containing the specified value if non-null
+    }
 
-	@Override
-	public List<AstNode> children() {
-		return Lists.<AstNode>builder()     // list builder in util by Kathy
-				.add(cond)
-				.add(trueStmt)
-				.addIfPresent(falseStmt)
-				.build();
-	}
+    public void setFalseStmt(Statement falseStmt) {
+        this.falseStmt = reparent(falseStmt); // reparent because it's optional
+    }
 
-	@Override
-	public String toString() {
-		return "if";
-	}
+    @Override
+    public List<AstNode> children() {
+        return Lists.<AstNode>builder()
+                .add(cond)
+                .add(trueStmt)
+                .addIfPresent(falseStmt)
+                .build();
+    }
+
+    @Override
+    public String toString() {
+        return "if";
+    }
 }
