@@ -2,18 +2,18 @@ package cmpt355.example.hinky.ast.node;
 
 import cmpt355.example.hinky.util.Lists;
 
-import javax.swing.plaf.nimbus.State;
 import java.util.List;
 import java.util.Optional;
 
 public class IfStatement extends Statement {
-    private Expression cond;
+
+  private Expression cond;
     private Statement trueStmt, falseStmt;
 
     public IfStatement(Expression cond, Statement trueStmt, Statement falseStmt) {
         setCond(cond);
-        setTrueStatement(trueStmt);
-        setFalseStatement(falseStmt);
+        setTrueStmt(trueStmt);
+        setFalseStmt(falseStmt);
     }
 
     public Expression getCond() {
@@ -21,27 +21,25 @@ public class IfStatement extends Statement {
     }
 
     public void setCond(Expression cond) {
-        this.cond = reparentNonNull(cond); // reparentNotNull because it's not optional
+        this.cond = reparentNonNull(cond); // reparentNonNull because it's not optional
     }
 
-    public Statement getTrueStatement() {
+    public Statement getTrueStmt() {
         return trueStmt;
     }
 
-    public void setTrueStatement(Statement trueStatement) {
-        this.trueStmt = trueStatement;
-    }
-
-    public Statement getFalseStatement() {
-        return falseStmt;
+    public void setTrueStmt(Statement trueStmt) {
+        this.trueStmt = reparentNonNull(trueStmt);
     }
 
     public Optional<Statement> getFalseStmt() {
         return Optional.ofNullable(falseStmt);
+        // Optional.ofNullable() returns an empty Optional if the arg is null or an
+        // Optional containing the specified value if non-null
     }
 
-    public void setFalseStatement(Statement falseStatement) {
-        this.falseStmt = falseStatement;
+    public void setFalseStmt(Statement falseStmt) {
+        this.falseStmt = reparent(falseStmt); // reparent because it's optional
     }
 
     @Override
