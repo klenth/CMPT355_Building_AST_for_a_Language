@@ -49,21 +49,21 @@ item
     ;
 
 expression
-    : NUMBER                                        #numberExpression
-    | IDENTIFIER                                    #variableExpression
-    | '(' expression ')'                            #parenExpression
-    | <assoc=right> expression '^' expression       #binaryOpExpression
-    | expression ('*' | '/') expression             #binaryOpExpression
-    | '-' expression                                #negateExpression
-    | expression ('+' | '-') expression             #binaryOpExpression
-    | IDENTIFIER arguments                          #funcCallExpression
+    : NUMBER                                                        #numberExpression
+    | IDENTIFIER                                                    #variableExpression
+    | '(' expression ')'                                            #parenExpression
+    | <assoc=right> expression '^' expression                       #binaryOpExpression
+    | expression ('*' | '/') expression                             #binaryOpExpression
+    | '-' expression                                                #negateExpression
+    | expression ('+' | '-') expression                             #binaryOpExpression
+    | IDENTIFIER arguments                                          #funcCallExpression
     ;
 
 booleanExpression
-    : 'not' booleanExpression
-    | booleanExpression 'and' booleanExpression
-    | booleanExpression 'or' booleanExpression
-    | expression ('=' | '<>' | '<' | '>' | '<=' | '>=') expression
+    : 'not' booleanExpression                                       #notBool
+    | booleanExpression 'and' booleanExpression                     #binaryBoolOp
+    | booleanExpression 'or' booleanExpression                      #binaryBoolop
+    | expression ('=' | '<>' | '<' | '>' | '<=' | '>=') expression  #binaryBoolExpr
     ;
 
 arguments
