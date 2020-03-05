@@ -6,5 +6,4 @@ package cmpt355.example.hinky.ast.node;
 public abstract class BooleanExpression extends AstNode {
 
     // Probably don't need any more code in here for GP3
-
 }
