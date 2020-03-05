@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class IfStatement extends Statement {
 
-    private Expression cond;
+  private Expression cond;
     private Statement trueStmt, falseStmt;
 
     public IfStatement(Expression cond, Statement trueStmt, Statement falseStmt) {
