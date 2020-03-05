@@ -63,7 +63,7 @@ booleanExpression
     : 'not' booleanExpression                       #notBool
     | booleanExpression 'and' booleanExpression     #binaryBoolOp
     | booleanExpression 'or' booleanExpression      #binaryBoolOp
-    | expression ('=' | '<>' | '<' | '>' | '<=' | '>=') expression #binaryBoolExpr
+    | expression ('=' | '<>' | '<' | '>' | '<=' | '>=') expression  #binaryBoolExpr
     ;
 
 arguments

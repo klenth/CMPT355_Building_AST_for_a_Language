@@ -1,4 +1,5 @@
 package cmpt355.example.hinky.ast.node;
+
 import cmpt355.example.hinky.util.Lists;
 
 import java.util.List;
@@ -9,11 +10,10 @@ public class IfStatement extends Statement {
     private Expression cond;
     private Statement trueStmt, falseStmt;
 
-    public IfStatement(Expression cond, Statement left, Statement right) {
+    public IfStatement(Expression cond, Statement trueStmt, Statement falseStmt) {
         setCond(cond);
-        setTrueStmt(left);
-        setFalseStmt(right);
-
+        setTrueStmt(trueStmt);
+        setFalseStmt(falseStmt);
     }
 
     public Expression getCond() {
@@ -21,7 +21,7 @@ public class IfStatement extends Statement {
     }
 
     public void setCond(Expression cond) {
-        this.cond = reparentNonNull(cond); //reparentNonNull because it's not optional
+        this.cond = reparentNonNull(cond); // reparentNonNull because it's not optional
     }
 
     public Statement getTrueStmt() {
@@ -29,11 +29,13 @@ public class IfStatement extends Statement {
     }
 
     public void setTrueStmt(Statement trueStmt) {
-        this.trueStmt = trueStmt;
+        this.trueStmt = reparentNonNull(trueStmt);
     }
 
     public Optional<Statement> getFalseStmt() {
         return Optional.ofNullable(falseStmt);
+        // Optional.ofNullable() returns an empty Optional if the arg is null or an
+        // Optional containing the specified value if non-null
     }
 
     public void setFalseStmt(Statement falseStmt) {
@@ -41,13 +43,14 @@ public class IfStatement extends Statement {
     }
 
     @Override
-    public List<? extends AstNode> children() {
+    public List<AstNode> children() {
         return Lists.<AstNode>builder()
                 .add(cond)
                 .add(trueStmt)
-                .add(falseStmt)
+                .addIfPresent(falseStmt)
                 .build();
     }
+
     @Override
     public String toString() {
         return "if";
